@@ -44,3 +44,6 @@ TagManager:
   - name: Items
     uniqueID: 2400291665
     locked: 0
+  - name: Enemy
+    uniqueID: 74140765
+    locked: 0
