@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class TowerManager : Singleton<TowerManager>
 {
+	[SerializeField, Range(0, 1)] float selectedTowerAlpha = 0.5f;
     TowerButton towerButtonPressed;
 	List<Transform> filledPositions = new List<Transform>();
+	GameObject selectedObject;
+	SpriteRenderer selectedObjectRenderer;
+
+	private void Start()
+	{
+		selectedObject = new GameObject();
+		selectedObject.name = "Selected Object";
+		selectedObjectRenderer = selectedObject.AddComponent<SpriteRenderer>();
+		selectedObjectRenderer.sortingLayerName = "Towers";
+		selectedObjectRenderer.sortingOrder = 10;
+		selectedObjectRenderer.color = new Vector4(1, 1, 1, selectedTowerAlpha);
+	}
 
 	private void Update()
 	{
@@ -22,11 +35,27 @@ public class TowerManager : Singleton<TowerManager>
 				}
 			}
 		}
+
+		if(towerButtonPressed != null)
+		{
+			SelectedTowerStickToMouse();
+		}
 	}
 
 	void PlaceTower(Vector2 point)
 	{
-		GameObject newTower = Instantiate(towerButtonPressed.towerObject, point, Quaternion.identity);
+		Instantiate(towerButtonPressed.towerObject, point, Quaternion.identity);
+	}
+
+	void SelectedTowerStickToMouse()
+	{
+		Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		selectedObject.transform.position = new Vector3(newPos.x, newPos.y, 0);
+	}
+
+	public void ShowSelectedTower()
+	{
+		selectedObjectRenderer.sprite = towerButtonPressed.sprite;
 	}
 
 	public void SelectedTower(TowerButton selectedButton)

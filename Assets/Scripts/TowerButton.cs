@@ -5,5 +5,5 @@ using UnityEngine;
 public class TowerButton : MonoBehaviour
 {
     public GameObject towerObject;
-    
+    public Sprite sprite;
 }
