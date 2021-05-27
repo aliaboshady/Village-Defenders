@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Buildground
   - Tower
+  - Projectile
   layers:
   - Default
   - TransparentFX

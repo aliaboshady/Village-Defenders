@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2984375945687646001}
   - component: {fileID: 7861413527197599959}
   - component: {fileID: 3992846558159255788}
-  m_Layer: 0
+  - component: {fileID: -5654409235111400312}
+  m_Layer: 6
   m_Name: Fireball
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,3 +100,19 @@ CircleCollider2D:
   m_Offset: {x: -0.06, y: 0}
   serializedVersion: 2
   m_Radius: 0.17
+--- !u!114 &-5654409235111400312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8181167778279623166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b34ad46bbaa454385073fb844e6de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  aliveTime: 5
+  attackStrength: 100
+  projectileType: 2

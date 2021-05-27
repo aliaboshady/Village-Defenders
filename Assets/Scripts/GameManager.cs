@@ -12,36 +12,18 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] float spawnWait;
     [SerializeField] float waveWait;
 
+    public static List<GameObject> currentEnemies = new List<GameObject>();
+
     int currentEnemiesOnScreen = 0;
     float spawnWaitPassed = 0;
     float waveWaitPassed = 0;
     bool isWaveFinished = false;
     int spawnedEnemiesCount = 0;
 
-    public static GameManager instance;
-    private void Awake()
-    {
-        CreateSingleton();
-    }
-
     void Update()
     {
         SpawnEnemies();
         SetNextWave();
-    }
-
-	void CreateSingleton()
-	{
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     void SpawnEnemies()
@@ -55,6 +37,7 @@ public class GameManager : Singleton<GameManager>
                 if (currentEnemiesOnScreen < maxEnemiesOnScreen && spawnedEnemiesCount < totalEnemies)
                 {
                     GameObject newEnemy = Instantiate(enemies[0], spawnPoint.position, Quaternion.identity);
+                    currentEnemies.Add(newEnemy);
                     currentEnemiesOnScreen++;
                     spawnedEnemiesCount++;
                 }
@@ -84,6 +67,7 @@ public class GameManager : Singleton<GameManager>
 	{
         if(currentEnemiesOnScreen > 0)
 		{
+            currentEnemies.RemoveAt(0);
             currentEnemiesOnScreen--;
 		}
 	}
