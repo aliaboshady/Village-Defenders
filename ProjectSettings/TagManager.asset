@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Checkpoint
   - Enemy
+  - Buildground
+  - Tower
   layers:
   - Default
   - TransparentFX
@@ -48,4 +50,7 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 74140765
+    locked: 0
+  - name: Towers
+    uniqueID: 2375932933
     locked: 0
