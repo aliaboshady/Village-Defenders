@@ -31,6 +31,7 @@ public class TowerController : MonoBehaviour
 
 	void ChooseClosestEnemy()
 	{
+		closestEnemy = null;
 		float closestDistance = 10000000f;
 
 		for (int i = 0; i < GameManager.currentEnemies.Count; i++)

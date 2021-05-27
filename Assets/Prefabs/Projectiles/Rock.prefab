@@ -114,5 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   aliveTime: 5
+  rockRotationSpeed: 500
+  direction: {x: 0, y: 0}
   attackStrength: 50
   projectileType: 0
