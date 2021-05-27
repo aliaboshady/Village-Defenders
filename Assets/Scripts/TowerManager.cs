@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerManager : Singleton<TowerManager>
 {
     TowerButton towerButtonPressed;
+	List<Transform> filledPositions = new List<Transform>();
 
 	private void Update()
 	{
@@ -12,16 +13,19 @@ public class TowerManager : Singleton<TowerManager>
 		{
 			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-			if (hit && hit.transform.tag == "Buildground")
+			if (towerButtonPressed != null && hit && hit.transform.tag == "Buildground")
 			{
-				PlaceTower(hit.transform.position);
+				if (!filledPositions.Contains(hit.transform))
+				{
+					filledPositions.Add(hit.transform);
+					PlaceTower(hit.transform.position);
+				}
 			}
 		}
 	}
 
 	void PlaceTower(Vector2 point)
 	{
-		if (towerButtonPressed == null) return;
 		GameObject newTower = Instantiate(towerButtonPressed.towerObject, point, Quaternion.identity);
 	}
 
