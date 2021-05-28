@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] Button playButton;
-    [SerializeField] float playButtonYStart;
-    [SerializeField] float playButtonYMid;
+    [SerializeField] Button retryButton;
     [SerializeField] Image defeatBanner;
     [SerializeField] Image victoryBanner;
     [SerializeField] Text moneyText;
@@ -43,15 +43,10 @@ public class GameManager : Singleton<GameManager>
     int spawnedEnemiesCount = 0;
     int waveEnemiesCount = 0;
     int enemiesTopSortingLayer = 0;
-    int rangeFrom = 0;
-    int rangeTo = 0;
 
 	private void Start()
 	{
-		defeatBanner.gameObject.SetActive(false);
-        victoryBanner.gameObject.SetActive(false);
-		currentMoney = startMoney;
-        maxEnemiesOnScreen = waveNumber * waveMultiplier;
+        ResetGame();
     }
 
 	void Update()
@@ -141,7 +136,6 @@ public class GameManager : Singleton<GameManager>
         {
             waveNumber = totalWaves;
             didWin = true;
-            print("You Won");
             EndGame();
         }
     }
@@ -150,7 +144,6 @@ public class GameManager : Singleton<GameManager>
 	{
         if(escapedNumber >= maxEscaped)
 		{
-            print("You Lost");
             didLose = true;
             EndGame();
 		}
@@ -158,9 +151,40 @@ public class GameManager : Singleton<GameManager>
 
     public void StartGame()
 	{
+        ResetGame();
         canPlay = true;
         playButton.gameObject.SetActive(false);
         hasEndBanner = false;
+    }
+
+    void ResetGame()
+	{
+        defeatBanner.gameObject.SetActive(false);
+        victoryBanner.gameObject.SetActive(false);
+        retryButton.gameObject.SetActive(false);
+        currentMoney = startMoney;
+        maxEnemiesOnScreen = waveNumber * waveMultiplier;
+
+        canPlay = false;
+
+        currentEnemies.Clear();
+
+        spawnWaitPassed = 0;
+        waveWaitPassed = 0;
+        isWaveFinished = false;
+        didLose = false;
+        didWin = false;
+        allWavesEnded = false;
+        hasEndBanner = false;
+
+        spawnedEnemiesCount = 0;
+        waveEnemiesCount = 0;
+        enemiesTopSortingLayer = 0;
+    }
+
+    public void Retry()
+	{
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void EndGame()
@@ -169,15 +193,14 @@ public class GameManager : Singleton<GameManager>
         {
             hasEndBanner = true;
             canPlay = false;
-            playButton.gameObject.SetActive(true);
-            playButton.gameObject.GetComponent<RectTransform>().position = new Vector3(0, playButtonYMid, 0);
+            retryButton.gameObject.SetActive(true);
             if (didLose)
             {
-                defeatBanner.gameObject.SetActive(false);
+                defeatBanner.gameObject.SetActive(true);
             }
             else if (didWin)
             {
-                victoryBanner.gameObject.SetActive(false);
+                victoryBanner.gameObject.SetActive(true);
             }
         }
     }
