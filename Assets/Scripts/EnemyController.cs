@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
 	Animator animator;
 	bool canMove = true;
 	bool isHurt = false;
+	bool isDead = false;
 
 	private void Start()
 	{
@@ -55,9 +56,15 @@ public class EnemyController : MonoBehaviour
 			}
 		}
 
-		if(currentHealth <= 0)
+		if(currentHealth <= 0 && !isDead)
 		{
+			isDead = true;
 			Die();
+		}
+
+		if (isDead)
+		{
+			canMove = false;
 		}
 	}
 
@@ -69,8 +76,8 @@ public class EnemyController : MonoBehaviour
 		}
 		else if(collision.tag == "Finish")
 		{
+			GameManager.instance.DecrementEnemies(gameObject);
 			Destroy(gameObject);
-			GameManager.instance.DecrementEnemies();
 		}
 		else if(collision.tag == "Projectile")
 		{
@@ -107,10 +114,6 @@ public class EnemyController : MonoBehaviour
 		canMove = false;
 		GameManager.currentEnemies.Remove(gameObject);
 		GameManager.instance.currentEnemiesOnScreen--;
-	}
-
-	void DestroyEnemy()
-	{
-		Destroy(gameObject);
+		GetComponent<BoxCollider2D>().enabled = false;
 	}
 }

@@ -6,9 +6,8 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject[] enemies;
-    [SerializeField] int maxEnemiesOnScreen;
     [SerializeField] int totalEnemies;
-    [SerializeField] int enemiesPerSpawn;
+    [SerializeField] int maxEnemiesOnScreen;
     [SerializeField] float spawnWait;
     [SerializeField] float waveWait;
 
@@ -28,7 +27,7 @@ public class GameManager : Singleton<GameManager>
 
     void SpawnEnemies()
 	{
-        if(enemiesPerSpawn > 0 && currentEnemiesOnScreen < totalEnemies && !isWaveFinished)
+        if(currentEnemiesOnScreen < totalEnemies && !isWaveFinished)
 		{
             spawnWaitPassed += Time.deltaTime;
             if (spawnWaitPassed >= spawnWait)
@@ -63,11 +62,12 @@ public class GameManager : Singleton<GameManager>
 		}
     }
 
-    public void DecrementEnemies()
+    public void DecrementEnemies(GameObject enemyObject)
 	{
         if(currentEnemiesOnScreen > 0)
 		{
-            currentEnemies.RemoveAt(0);
+            currentEnemies.Remove(enemyObject);
+            //currentEnemies.RemoveAt(0);
             currentEnemiesOnScreen--;
 		}
 	}
