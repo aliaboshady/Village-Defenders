@@ -32323,6 +32323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Retry Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6545344125953300492, guid: 53a4c513dd671db4cabe7ff40a483e5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6545344125953300494, guid: 53a4c513dd671db4cabe7ff40a483e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -35028,6 +35032,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6545344125953300492, guid: 53a4c513dd671db4cabe7ff40a483e5f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6545344125953300494, guid: 53a4c513dd671db4cabe7ff40a483e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -35159,7 +35167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6704910520112725620, guid: d65d5d8a0bc7f7a4fb20d515dcff4111, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6704910520112725627, guid: d65d5d8a0bc7f7a4fb20d515dcff4111, type: 3}
       propertyPath: m_Pivot.x
@@ -35352,7 +35360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7149524887203635815, guid: 5561c2887a97dde48903bbce66c2413e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5561c2887a97dde48903bbce66c2413e, type: 3}
