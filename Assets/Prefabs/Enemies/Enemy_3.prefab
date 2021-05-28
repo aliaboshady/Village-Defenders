@@ -167,6 +167,6 @@ MonoBehaviour:
   exitPoint: {fileID: 5931765827248250170, guid: a2800fc889ceea4408e00ee360993a4c, type: 3}
   path: {fileID: 1222145778935655959, guid: 4705cdf42b2442146804ad4529b20528, type: 3}
   navigationUpdate: 0.01
-  maxHealth: 0
-  hurtWait: 0
+  maxHealth: 300
+  hurtWait: 3
   cost: 3

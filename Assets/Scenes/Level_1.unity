@@ -18533,7 +18533,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Wave 100
+  m_Text: Wave 1/10
 --- !u!222 &1104494983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35143,6 +35143,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
+      propertyPath: maxEscaped
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1840422009}
@@ -35151,16 +35155,24 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
+      propertyPath: totalWaves
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: escapedText
       value: 
       objectReference: {fileID: 133422818}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: totalEnemies
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
+      propertyPath: waveMultiplier
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: maxEnemiesOnScreen
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: enemiesPerSpawnWait
