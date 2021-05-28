@@ -79,6 +79,7 @@ public class EnemyController : MonoBehaviour
 		else if(collision.tag == "Finish")
 		{
 			GameManager.instance.DecrementEnemies(gameObject);
+			GameManager.instance.escapedNumber++;
 			Destroy(gameObject);
 		}
 		else if(collision.tag == "Projectile")

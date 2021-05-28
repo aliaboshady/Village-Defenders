@@ -2385,7 +2385,7 @@ GameObject:
   - component: {fileID: 133422819}
   - component: {fileID: 133422818}
   m_Layer: 5
-  m_Name: Excaped Label
+  m_Name: Escaped Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35127,6 +35127,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
+      propertyPath: waveText
+      value: 
+      objectReference: {fileID: 1104494982}
+    - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: waveWait
       value: 5
       objectReference: {fileID: 0}
@@ -35146,6 +35150,10 @@ PrefabInstance:
       propertyPath: startMoney
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
+      propertyPath: escapedText
+      value: 
+      objectReference: {fileID: 133422818}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: totalEnemies
       value: 2

@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] Text moneyText;
+    [SerializeField] Text waveText;
+    [SerializeField] Text escapedText;
+    public int escapedNumber = 0;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject[] enemies;
     [SerializeField] int totalEnemies;
     [SerializeField] int maxEnemiesOnScreen;
     public int currentEnemiesOnScreen = 0;
+    [SerializeField] float waveNumber = 1;
     [SerializeField] float spawnWait;
     [SerializeField] float waveWait;
     [SerializeField] int startMoney;
@@ -38,6 +42,8 @@ public class GameManager : Singleton<GameManager>
         SetNextWave();
         AdjustMoney();
         moneyText.text = currentMoney.ToString();
+        waveText.text = "Wave " + waveNumber.ToString();
+        escapedText.text = "Escaped " + escapedNumber.ToString() + "/" + totalEnemies;
     }
 
     void SpawnEnemies()
@@ -75,6 +81,7 @@ public class GameManager : Singleton<GameManager>
             if (waveWaitPassed >= waveWait - spawnWait)
 			{
                 waveEnemiesCount = 0;
+                waveNumber++;
                 waveWaitPassed = 0;
                 isWaveFinished = false;
             }

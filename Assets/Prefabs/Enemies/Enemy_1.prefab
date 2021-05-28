@@ -169,4 +169,4 @@ MonoBehaviour:
   navigationUpdate: 0.01
   maxHealth: 100
   hurtWait: 1
-  cost: 150
+  cost: 1
