@@ -44,6 +44,8 @@ public class TowerManager : Singleton<TowerManager>
 		{
 			SelectedTowerStickToMouse();
 		}
+
+		DeselectTower();
 	}
 
 	void PlaceTower(Vector2 point)
@@ -65,5 +67,14 @@ public class TowerManager : Singleton<TowerManager>
 	public void SelectedTower(TowerButton selectedButton)
 	{
 		towerButtonPressed = selectedButton;
+	}
+
+	void DeselectTower()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			towerButtonPressed = null;
+			selectedObjectRenderer.sprite = null;
+		}
 	}
 }
