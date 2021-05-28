@@ -34599,11 +34599,11 @@ PrefabInstance:
       objectReference: {fileID: 1840422009}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: totalEnemies
-      value: 8
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: maxEnemiesOnScreen
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: enemiesPerSpawnWait

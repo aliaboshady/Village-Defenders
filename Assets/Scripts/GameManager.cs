@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     float waveWaitPassed = 0;
     bool isWaveFinished = false;
     int spawnedEnemiesCount = 0;
+    int enemiesTopSortingLayer = 0;
 
     void Update()
     {
@@ -36,6 +37,8 @@ public class GameManager : Singleton<GameManager>
                 if (currentEnemiesOnScreen < maxEnemiesOnScreen && spawnedEnemiesCount < totalEnemies)
                 {
                     GameObject newEnemy = Instantiate(enemies[0], spawnPoint.position, Quaternion.identity);
+                    newEnemy.GetComponent<SpriteRenderer>().sortingOrder = enemiesTopSortingLayer;
+                    enemiesTopSortingLayer++;
                     currentEnemies.Add(newEnemy);
                     currentEnemiesOnScreen++;
                     spawnedEnemiesCount++;
