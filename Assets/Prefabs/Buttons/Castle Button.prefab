@@ -315,3 +315,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerObject: {fileID: 3729706119740932649, guid: cc9b302a6d9205f458cad2b99a59348d, type: 3}
   sprite: {fileID: 21300000, guid: a78a3f1f9859348e8b266f807ae7b6b8, type: 3}
+  cost: 10

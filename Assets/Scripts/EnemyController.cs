@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float navigationUpdate;
     [SerializeField] int maxHealth;
     [SerializeField] float hurtWait;
+    [SerializeField] int cost;
     int target = 1;
 
     float navigationTime = 0;
@@ -59,6 +60,7 @@ public class EnemyController : MonoBehaviour
 		if(currentHealth <= 0 && !isDead)
 		{
 			isDead = true;
+			GameManager.instance.currentMoney += cost;
 			Die();
 		}
 

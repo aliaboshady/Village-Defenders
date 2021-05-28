@@ -8,11 +8,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] GameObject[] enemies;
     [SerializeField] int totalEnemies;
     [SerializeField] int maxEnemiesOnScreen;
+    public int currentEnemiesOnScreen = 0;
     [SerializeField] float spawnWait;
     [SerializeField] float waveWait;
+    [SerializeField] int startMoney;
+    public int maxMoney;
+    public int currentMoney;
 
     public static List<GameObject> currentEnemies = new List<GameObject>();
-    public int currentEnemiesOnScreen = 0;
 
     float spawnWaitPassed = 0;
     float waveWaitPassed = 0;
@@ -21,10 +24,16 @@ public class GameManager : Singleton<GameManager>
     int waveEnemiesCount = 0;
     int enemiesTopSortingLayer = 0;
 
-    void Update()
+	private void Start()
+	{
+        currentMoney = startMoney;
+	}
+
+	void Update()
     {
         SpawnEnemies();
         SetNextWave();
+        AdjustMoney();
     }
 
     void SpawnEnemies()
@@ -73,8 +82,15 @@ public class GameManager : Singleton<GameManager>
         if(currentEnemiesOnScreen > 0)
 		{
             currentEnemies.Remove(enemyObject);
-            //currentEnemies.RemoveAt(0);
             currentEnemiesOnScreen--;
+		}
+	}
+
+    void AdjustMoney()
+	{
+        if(currentMoney > maxMoney)
+		{
+            currentMoney = maxMoney;
 		}
 	}
 }

@@ -6,4 +6,5 @@ public class TowerButton : MonoBehaviour
 {
     public GameObject towerObject;
     public Sprite sprite;
+    public int cost;
 }

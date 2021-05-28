@@ -10583,7 +10583,7 @@ RectTransform:
   - {fileID: 1968323878}
   - {fileID: 839003707}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20000,7 +20000,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1221444190
 GameObject:
@@ -34743,7 +34743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1917948949231285106, guid: 07092f9b68ed68b4c8fa68f26f6a60d6, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1917948949231285106, guid: 07092f9b68ed68b4c8fa68f26f6a60d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35123,6 +35123,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
+      propertyPath: maxMoney
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: waveWait
       value: 5
       objectReference: {fileID: 0}
@@ -35134,6 +35138,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1840422009}
+    - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
+      propertyPath: startMoney
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: totalEnemies
       value: 2

@@ -30,8 +30,12 @@ public class TowerManager : Singleton<TowerManager>
 			{
 				if (!filledPositions.Contains(hit.transform))
 				{
-					filledPositions.Add(hit.transform);
-					PlaceTower(hit.transform.position);
+					if(GameManager.instance.currentMoney >= towerButtonPressed.cost)
+					{
+						GameManager.instance.currentMoney -= towerButtonPressed.cost;
+						filledPositions.Add(hit.transform);
+						PlaceTower(hit.transform.position);
+					}
 				}
 			}
 		}
