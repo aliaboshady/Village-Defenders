@@ -22,30 +22,33 @@ public class TowerManager : Singleton<TowerManager>
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (GameManager.instance.canPlay)
 		{
-			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-			if (towerButtonPressed != null && hit && hit.transform.tag == "Buildground")
+			if (Input.GetMouseButtonDown(0))
 			{
-				if (!filledPositions.Contains(hit.transform))
+				Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+				if (towerButtonPressed != null && hit && hit.transform.tag == "Buildground")
 				{
-					if(GameManager.instance.currentMoney >= towerButtonPressed.cost)
+					if (!filledPositions.Contains(hit.transform))
 					{
-						GameManager.instance.currentMoney -= towerButtonPressed.cost;
-						filledPositions.Add(hit.transform);
-						PlaceTower(hit.transform.position);
+						if (GameManager.instance.currentMoney >= towerButtonPressed.cost)
+						{
+							GameManager.instance.currentMoney -= towerButtonPressed.cost;
+							filledPositions.Add(hit.transform);
+							PlaceTower(hit.transform.position);
+						}
 					}
 				}
 			}
-		}
 
-		if(towerButtonPressed != null)
-		{
-			SelectedTowerStickToMouse();
-		}
+			if (towerButtonPressed != null)
+			{
+				SelectedTowerStickToMouse();
+			}
 
-		DeselectTower();
+			DeselectTower();
+		}
 	}
 
 	void PlaceTower(Vector2 point)
@@ -61,12 +64,18 @@ public class TowerManager : Singleton<TowerManager>
 
 	public void ShowSelectedTower()
 	{
-		selectedObjectRenderer.sprite = towerButtonPressed.sprite;
+		if (GameManager.instance.canPlay)
+		{
+			selectedObjectRenderer.sprite = towerButtonPressed.sprite;
+		}
 	}
 
 	public void SelectedTower(TowerButton selectedButton)
 	{
-		towerButtonPressed = selectedButton;
+		if (GameManager.instance.canPlay)
+		{
+			towerButtonPressed = selectedButton;
+		}
 	}
 
 	void DeselectTower()

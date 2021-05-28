@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: -2165821876479576607
     second: Tower Display
+  - first:
+      213: 3035516792126375084
+    second: X
+  - first:
+      213: 3120384529538254799
+    second: Lose
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -230,6 +236,48 @@ TextureImporter:
       bones: []
       spriteID: 1e53aa57a7471f1e0800000000000000
       internalID: -2165821876479576607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: X
+      rect:
+        serializedVersion: 2
+        x: 2691
+        y: 1637
+        width: 136
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca40d688072502a20800000000000000
+      internalID: 3035516792126375084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lose
+      rect:
+        serializedVersion: 2
+        x: 2275
+        y: 2040
+        width: 309
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc780c57235dd4b20800000000000000
+      internalID: 3120384529538254799
       vertices: []
       indices: 
       edges: []

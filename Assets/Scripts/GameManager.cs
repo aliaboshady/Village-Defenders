@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] Button playButton;
+    [SerializeField] float playButtonYStart;
+    [SerializeField] float playButtonYMid;
+    [SerializeField] Image defeatBanner;
+    [SerializeField] Image victoryBanner;
     [SerializeField] Text moneyText;
     [SerializeField] Text waveText;
     [SerializeField] Text escapedText;
@@ -23,6 +28,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] int startMoney;
     public int maxMoney;
     public int currentMoney;
+    public bool canPlay = false;
 
     public static List<GameObject> currentEnemies = new List<GameObject>();
 
@@ -32,6 +38,8 @@ public class GameManager : Singleton<GameManager>
     bool didLose = false;
     bool didWin = false;
     bool allWavesEnded = false;
+    bool hasEndBanner = false;
+    
     int spawnedEnemiesCount = 0;
     int waveEnemiesCount = 0;
     int enemiesTopSortingLayer = 0;
@@ -40,20 +48,25 @@ public class GameManager : Singleton<GameManager>
 
 	private void Start()
 	{
-        currentMoney = startMoney;
+		defeatBanner.gameObject.SetActive(false);
+        victoryBanner.gameObject.SetActive(false);
+		currentMoney = startMoney;
         maxEnemiesOnScreen = waveNumber * waveMultiplier;
     }
 
 	void Update()
     {
-        SpawnEnemies();
-        SetNextWave();
-        AdjustMoney();
-        moneyText.text = currentMoney.ToString();
-        waveText.text = "Wave " + waveNumber.ToString() + "/" + totalWaves;
-        escapedText.text = "Escaped " + escapedNumber.ToString() + "/" + maxEscaped;
-        CheckLoss();
-        CheckWin();
+        if (canPlay)
+        {
+            SpawnEnemies();
+            SetNextWave();
+            AdjustMoney();
+            moneyText.text = currentMoney.ToString();
+            waveText.text = "Wave " + waveNumber.ToString() + "/" + totalWaves;
+            escapedText.text = "Escaped " + escapedNumber.ToString() + "/" + maxEscaped;
+            CheckLoss();
+            CheckWin();
+        }
     }
 
     void SpawnEnemies()
@@ -129,6 +142,7 @@ public class GameManager : Singleton<GameManager>
             waveNumber = totalWaves;
             didWin = true;
             print("You Won");
+            EndGame();
         }
     }
 
@@ -138,6 +152,33 @@ public class GameManager : Singleton<GameManager>
 		{
             print("You Lost");
             didLose = true;
+            EndGame();
 		}
 	}
+
+    public void StartGame()
+	{
+        canPlay = true;
+        playButton.gameObject.SetActive(false);
+        hasEndBanner = false;
+    }
+
+    void EndGame()
+	{
+        if (!hasEndBanner)
+        {
+            hasEndBanner = true;
+            canPlay = false;
+            playButton.gameObject.SetActive(true);
+            playButton.gameObject.GetComponent<RectTransform>().position = new Vector3(0, playButtonYMid, 0);
+            if (didLose)
+            {
+                defeatBanner.gameObject.SetActive(false);
+            }
+            else if (didWin)
+            {
+                victoryBanner.gameObject.SetActive(false);
+            }
+        }
+    }
 }
