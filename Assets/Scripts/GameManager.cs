@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] Text moneyText;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject[] enemies;
     [SerializeField] int totalEnemies;
@@ -27,13 +29,15 @@ public class GameManager : Singleton<GameManager>
 	private void Start()
 	{
         currentMoney = startMoney;
-	}
+
+    }
 
 	void Update()
     {
         SpawnEnemies();
         SetNextWave();
         AdjustMoney();
+        moneyText.text = currentMoney.ToString();
     }
 
     void SpawnEnemies()
