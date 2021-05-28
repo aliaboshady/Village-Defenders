@@ -43,11 +43,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04aa0c3310c107e44b09943a935bd108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
+  waveText: {fileID: 0}
+  escapedText: {fileID: 0}
+  escapedNumber: 0
+  maxEscaped: 3
   spawnPoint: {fileID: 0}
   enemies:
   - {fileID: 5152241416765509411, guid: f9d936329aedcf544ba31cb673a0767f, type: 3}
   - {fileID: 7324957981528883765, guid: e2b328eac90b0e84cacf0de474c5631e, type: 3}
   - {fileID: 6795110484254028104, guid: aa99b0b1a81c21f41a5a55e0deca2531, type: 3}
-  maxEnemiesOnScreen: 8
-  totalEnemies: 8
-  enemiesPerSpawn: 1
+  totalEnemies: 140
+  maxEnemiesOnScreen: 10
+  currentEnemiesOnScreen: 0
+  totalWaves: 3
+  waveNumber: 1
+  waveMultiplier: 5
+  spawnWait: 1
+  waveWait: 5
+  startMoney: 10
+  maxMoney: 100
+  currentMoney: 0

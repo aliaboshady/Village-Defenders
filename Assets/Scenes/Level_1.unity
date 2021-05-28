@@ -35168,11 +35168,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: waveMultiplier
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: maxEnemiesOnScreen
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8374526931487822296, guid: ae236bc6bd7b7c2499e0f82b4b58f12e, type: 3}
       propertyPath: enemiesPerSpawnWait
