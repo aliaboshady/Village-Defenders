@@ -6,14 +6,13 @@ public enum ProjectileType {rock, arrow, fireball};
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float speed;
+	public int attackStrength;
+	public ProjectileType projectileType;
+	[SerializeField] float speed;
     [SerializeField] float aliveTime = 5f;
     [SerializeField] float rockRotationSpeed = 5f;
 
 	[HideInInspector] public Vector2 direction;
-
-	public int attackStrength;
-    public ProjectileType projectileType;
 
 	private void Start()
 	{

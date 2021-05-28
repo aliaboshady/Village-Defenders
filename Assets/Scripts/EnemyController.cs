@@ -7,19 +7,28 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Transform exitPoint;
     [SerializeField] GameObject path;
     [SerializeField] float navigationUpdate;
+    [SerializeField] int maxHealth;
+    [SerializeField] float hurtWait;
     int target = 1;
 
     float navigationTime = 0;
+    float hurtWaitPassed = 0;
+	int currentHealth = 0;
 	Transform[] wayPoints;
+	Animator animator;
+	bool canMove = true;
+	bool isHurt = false;
 
 	private void Start()
 	{
 		wayPoints = path.GetComponentsInChildren<Transform>();
+		animator = GetComponent<Animator>();
+		currentHealth = maxHealth;
 	}
 
 	private void Update()
 	{
-		if(wayPoints != null)
+		if(wayPoints != null && canMove)
 		{
 			navigationTime += Time.deltaTime;
 			if(navigationTime >= navigationUpdate)
@@ -36,6 +45,20 @@ public class EnemyController : MonoBehaviour
 				navigationTime = 0;
 			}
 		}
+
+		if (isHurt)
+		{
+			hurtWaitPassed += Time.deltaTime;
+			if(hurtWaitPassed >= hurtWait)
+			{
+				isHurt = false;
+			}
+		}
+
+		if(currentHealth <= 0)
+		{
+			Die();
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -49,5 +72,45 @@ public class EnemyController : MonoBehaviour
 			Destroy(gameObject);
 			GameManager.instance.DecrementEnemies();
 		}
+		else if(collision.tag == "Projectile")
+		{
+			int damage = collision.GetComponent<Projectile>().attackStrength;
+			DecreaseHealth(damage);
+			Destroy(collision.gameObject);
+		}
+	}
+
+	void DecreaseHealth(int damage)
+	{
+		if (!isHurt)
+		{
+			isHurt = true;
+			currentHealth -= damage;
+			Hurt();
+		}
+	}
+
+	void Hurt()
+	{
+		canMove = false;
+		animator.SetTrigger("Hurt");
+	}
+
+	void CanMove()
+	{
+		canMove = true;
+	}
+
+	void Die()
+	{
+		animator.SetTrigger("Die");
+		canMove = false;
+		GameManager.currentEnemies.Remove(gameObject);
+		GameManager.instance.currentEnemiesOnScreen--;
+	}
+
+	void DestroyEnemy()
+	{
+		Destroy(gameObject);
 	}
 }

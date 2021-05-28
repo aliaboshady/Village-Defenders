@@ -13,8 +13,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] float waveWait;
 
     public static List<GameObject> currentEnemies = new List<GameObject>();
+    public int currentEnemiesOnScreen = 0;
 
-    int currentEnemiesOnScreen = 0;
     float spawnWaitPassed = 0;
     float waveWaitPassed = 0;
     bool isWaveFinished = false;

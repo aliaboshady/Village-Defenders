@@ -122,7 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b34ad46bbaa454385073fb844e6de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 10
   aliveTime: 5
+  rockRotationSpeed: 5
+  direction: {x: 0, y: 0}
   attackStrength: 50
   projectileType: 1
