@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     float waveWaitPassed = 0;
     bool isWaveFinished = false;
     int spawnedEnemiesCount = 0;
+    int waveEnemiesCount = 0;
     int enemiesTopSortingLayer = 0;
 
     void Update()
@@ -42,6 +43,7 @@ public class GameManager : Singleton<GameManager>
                     currentEnemies.Add(newEnemy);
                     currentEnemiesOnScreen++;
                     spawnedEnemiesCount++;
+                    waveEnemiesCount++;
                 }
             }
 		}
@@ -49,7 +51,7 @@ public class GameManager : Singleton<GameManager>
 
     void SetNextWave()
 	{
-        if (currentEnemiesOnScreen == maxEnemiesOnScreen)
+        if (waveEnemiesCount == maxEnemiesOnScreen)
         {
             isWaveFinished = true;
         }
@@ -59,6 +61,7 @@ public class GameManager : Singleton<GameManager>
             waveWaitPassed += Time.deltaTime;
             if (waveWaitPassed >= waveWait - spawnWait)
 			{
+                waveEnemiesCount = 0;
                 waveWaitPassed = 0;
                 isWaveFinished = false;
             }
