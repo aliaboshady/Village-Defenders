@@ -54,6 +54,7 @@ public class EnemyController : MonoBehaviour
 			if(hurtWaitPassed >= hurtWait)
 			{
 				isHurt = false;
+				hurtWaitPassed = 0;
 			}
 		}
 

@@ -112,7 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b34ad46bbaa454385073fb844e6de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackStrength: 250
+  projectileType: 2
   speed: 3
   aliveTime: 5
-  attackStrength: 100
-  projectileType: 2
+  rockRotationSpeed: 5
+  direction: {x: 0, y: 0}
